@@ -38,8 +38,6 @@ class GameViewController: UIViewController {
         if let currentPlayer = player {
             scene?.rootNode.addChildNode(currentPlayer)
         }
-        //scene?.rootNode.addChildNode(player!)
-        print("Adding Player")
     }
     
     

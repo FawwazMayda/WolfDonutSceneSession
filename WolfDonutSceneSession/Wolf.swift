@@ -39,8 +39,6 @@ class Wolf: SCNNode {
         wolfWalking.addChildNode(walkingScene.rootNode)
         wolfIdle.addChildNode(idleScene.rootNode)
         wolfRunning.addChildNode(runningScene.rootNode)
-        
-        print("Adding 1")
     }
     
     func setWolfState(state: WolfState) {
@@ -55,7 +53,7 @@ class Wolf: SCNNode {
             activeNode = wolfWalking
         }
         addChildNode(activeNode!)
-        print("Adding 2")
+    
         
     }
     
