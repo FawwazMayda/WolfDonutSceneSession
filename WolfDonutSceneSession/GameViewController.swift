@@ -46,7 +46,7 @@ class GameViewController: UIViewController {
         scene = SCNScene(named: "art.scnassets/GameScene.scn")
         scene?.background.contents = UIImage(named: "art.scnassets/textures/Background_sky")
         scnView.scene = scene
-        scnView.allowsCameraControl = true
+        scnView.allowsCameraControl = false
     }
     
     func setupPlayer() {
