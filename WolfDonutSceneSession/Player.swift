@@ -10,6 +10,11 @@ import SceneKit
 
 class Player: SCNNode {
     private var wolf : Wolf?
+    private var lookAtForwardPosition = SCNVector3Make(0.0,0.0,1.0)
+    private var cameraForwardPosition = SCNVector3(0,1,-2)
+    var baseAltitude : Float = 0
+    private var lookAtNode : SCNNode?
+    private var cameraNode : SCNNode?
     override init() {
         super.init()
         //load wolf
@@ -27,6 +32,24 @@ class Player: SCNNode {
     
     func changeWolfState(_ state: WolfState) {
         self.wolf?.setWolfState(state: state)
+    }
+    
+    func updateWolfPosition(_ joyStickData: AnalogJoystickData, velocityMultiplier: CGFloat) {
+        let xMovement = -joyStickData.velocity.x * velocityMultiplier
+        let zMovement = (joyStickData.velocity.y * velocityMultiplier)
+
+        self.position = SCNVector3(
+            CGFloat(self.position.x) + xMovement,
+            0,
+            CGFloat(self.position.z) + zMovement)
+
+        wolf?.eulerAngles.y = Float(joyStickData.angular)
+
+        lookAtNode?.rotation = SCNVector4(
+            Int((lookAtNode?.position.y)! + Float(joyStickData.angular)),
+            Int((lookAtNode?.position.y)! + Float(joyStickData.angular)),
+            Int((lookAtNode?.position.y)! + Float(joyStickData.angular)),
+            0)
     }
     
     func loadLight() {

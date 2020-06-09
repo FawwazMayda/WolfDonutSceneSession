@@ -22,7 +22,7 @@ class Wolf: SCNNode {
     override init() {
         super.init()
         loadWolfState()
-        setWolfState(state: .walking)
+        setWolfState(state: .idle)
     }
     func loadWolfState() {
         guard

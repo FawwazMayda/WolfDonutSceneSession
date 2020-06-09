@@ -30,6 +30,15 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hud = HUD(size: view.bounds.size)
+        hud?.joyStick.trackingHandler = updatePlayerPosition
+        
+        hud?.joyStick.beginHandler  = { [weak self] in
+            self?.updatePlayerState(.running)
+        }
+        
+        hud?.joyStick.stopHandler = { [weak self] in
+            self?.updatePlayerState(.idle)
+        }
         scnView.overlaySKScene = hud?.scene
         
     }
@@ -45,6 +54,14 @@ class GameViewController: UIViewController {
         if let currentPlayer = player {
             scene?.rootNode.addChildNode(currentPlayer)
         }
+    }
+    
+    func updatePlayerPosition(_ joyStickData: AnalogJoystickData) {
+        player?.updateWolfPosition(joyStickData, velocityMultiplier: 0.0016)
+    }
+    
+    func updatePlayerState(_ state: WolfState) {
+        player?.changeWolfState(state)
     }
     
     
