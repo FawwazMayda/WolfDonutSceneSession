@@ -12,9 +12,22 @@ import SceneKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet var scnView: SCNView!
+    private var scene : SCNScene?
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setup World
+        setupWorld()
+        //Setup Player
+        //Setup Camera
+        
+    }
     
+    func setupWorld() {
+        scene = SCNScene(named: "art.scnassets/GameScene.scn")
+        scene?.background.contents = UIImage(named: "art.scnassets/textures/Background_sky")
+        scnView.scene = scene
+        scnView.allowsCameraControl = true
     }
     
     
