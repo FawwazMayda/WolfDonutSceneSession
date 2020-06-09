@@ -19,9 +19,23 @@ class Player: SCNNode {
         super.init()
         //load wolf
         loadWolf()
-        //load camera
         //load lighting
         loadLight()
+        //load camera
+        
+        
+    }
+    
+    func loadCameraFollow() {
+        lookAtNode = SCNNode()
+        lookAtNode?.position = lookAtForwardPosition
+        addChildNode(lookAtNode!)
+        
+        cameraNode = SCNNode()
+        cameraNode?.camera = SCNCamera()
+        cameraNode?.position = cameraForwardPosition
+        cameraNode?.camera?.zNear = 0.1
+        cameraNode?.camera?.zFar = 200
         
     }
     
