@@ -18,7 +18,7 @@ class HUD {
     
     init(size : CGSize) {
         _scene = SKScene(size: size)
-        joyStick = AnalogJoystick(diameter: size.width/2, colors: nil, images: (substrate: #imageLiteral(resourceName: "jStick"), stick: #imageLiteral(resourceName: "jStick")))
+        joyStick = AnalogJoystick(diameter: size.width/2, colors: nil, images: (substrate: #imageLiteral(resourceName: "jStick"), stick: #imageLiteral(resourceName: "jSubstrate")))
         joyStick.position = CGPoint(x: size.width/2, y: size.width/2)
         _scene.addChild(joyStick)
     }

@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet var scnView: SCNView!
     private var scene : SCNScene?
     private var player : Player?
+    var hud : HUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,12 @@ class GameViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hud = HUD(size: view.bounds.size)
+        scnView.overlaySKScene = hud?.scene
+        
+    }
     func setupWorld() {
         scene = SCNScene(named: "art.scnassets/GameScene.scn")
         scene?.background.contents = UIImage(named: "art.scnassets/textures/Background_sky")
