@@ -57,7 +57,7 @@ class GameViewController: UIViewController {
     }
     
     func updatePlayerPosition(_ joyStickData: AnalogJoystickData) {
-        player?.updateWolfPosition(joyStickData, velocityMultiplier: 0.0016)
+        player?.updateWolfPosition(joyStickData, velocityMultiplier: 0.0008)
     }
     
     func updatePlayerState(_ state: WolfState) {
