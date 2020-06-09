@@ -21,6 +21,7 @@ class Player: SCNNode {
         loadWolf()
         //load lighting
         loadLight()
+        loadCameraFollow()
         //load camera
         
         
@@ -36,7 +37,7 @@ class Player: SCNNode {
         cameraNode?.position = cameraForwardPosition
         cameraNode?.camera?.zNear = 0.1
         cameraNode?.camera?.zFar = 200
-        
+        addChildNode(cameraNode!)
     }
     
     func loadWolf() {
