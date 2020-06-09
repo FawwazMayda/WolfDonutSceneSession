@@ -14,6 +14,8 @@ class GameViewController: UIViewController {
 
     @IBOutlet var scnView: SCNView!
     private var scene : SCNScene?
+    private var player : Player?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Setup World
@@ -32,7 +34,12 @@ class GameViewController: UIViewController {
     }
     
     func setupPlayer() {
-        
+        player = Player()
+        if let currentPlayer = player {
+            scene?.rootNode.addChildNode(currentPlayer)
+        }
+        //scene?.rootNode.addChildNode(player!)
+        print("Adding Player")
     }
     
     

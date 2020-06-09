@@ -13,18 +13,18 @@ class Player: SCNNode {
     override init() {
         super.init()
         //load wolf
+        loadWolf()
         //load camera
         //load lighting
     }
     
     func loadWolf() {
-        wolf = Wolf()
+        self.wolf = Wolf()
         addChildNode(wolf!)
-        
     }
     
     func changeWolfState(_ state: WolfState) {
-        wolf?.setWolfState(state: state)
+        self.wolf?.setWolfState(state: state)
     }
     
     required init?(coder: NSCoder) {

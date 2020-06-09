@@ -18,10 +18,11 @@ class Wolf: SCNNode {
     private var wolfIdle : SCNNode = SCNNode()
     private var wolfRunning: SCNNode = SCNNode()
     private var activeNode : SCNNode?
+    
     override init() {
         super.init()
         loadWolfState()
-        setWolfState(state: .idle)
+        setWolfState(state: .walking)
     }
     func loadWolfState() {
         guard
@@ -29,9 +30,17 @@ class Wolf: SCNNode {
             let idleScene = SCNScene(named: "art.scnassets/Wolf/Wolf_Idle.scn"),
             let runningScene = SCNScene(named: "art.scnassets/Wolf/Wolf_Running.scn") else { return }
         
+        /*
+        wolfWalking = walkingScene.rootNode
+        wolfIdle = idleScene.rootNode
+        wolfRunning = runningScene.rootNode
+        */
+        
         wolfWalking.addChildNode(walkingScene.rootNode)
         wolfIdle.addChildNode(idleScene.rootNode)
         wolfRunning.addChildNode(runningScene.rootNode)
+        
+        print("Adding 1")
     }
     
     func setWolfState(state: WolfState) {
@@ -46,6 +55,7 @@ class Wolf: SCNNode {
             activeNode = wolfWalking
         }
         addChildNode(activeNode!)
+        print("Adding 2")
         
     }
     
