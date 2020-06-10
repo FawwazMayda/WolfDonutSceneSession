@@ -67,7 +67,7 @@ class GameViewController: UIViewController {
         
         let grassNode = scene?.rootNode.childNode(withName: "Grass", recursively: true)!
         grassNode?.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-        
+        grassNode?.categoryBitMask = GameBitMask.grass
         
         scnView.scene = scene
         scnView.allowsCameraControl = false
@@ -78,6 +78,7 @@ class GameViewController: UIViewController {
     func setupPlayer() {
         player = Player()
         player?.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        player?.categoryBitMask = GameBitMask.wolf
         if let currentPlayer = player {
             scene?.rootNode.addChildNode(currentPlayer)
         }
@@ -91,6 +92,7 @@ class GameViewController: UIViewController {
             let zPos = Float.random(in: -6...6)
             donut.position = SCNVector3(xPos,0,zPos)
             donut.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+            donut.categoryBitMask = GameBitMask.donut
             scene?.rootNode.addChildNode(donut)
         }
     }
