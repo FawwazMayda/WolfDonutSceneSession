@@ -10,6 +10,9 @@ import UIKit
 import QuartzCore
 import SceneKit
 
+enum SceneSound: Int {
+    
+}
 class GameViewController: UIViewController {
 
     @IBOutlet var scnView: SCNView!
@@ -64,10 +67,12 @@ class GameViewController: UIViewController {
     func setupWorld() {
         scene = SCNScene(named: "art.scnassets/GameScene.scn")
         scene?.background.contents = UIImage(named: "art.scnassets/textures/Background_sky")
-        
+        scene?.physicsWorld.contactDelegate = self
         let grassNode = scene?.rootNode.childNode(withName: "Grass", recursively: true)!
         grassNode?.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         grassNode?.categoryBitMask = GameBitMask.grass
+        grassNode?.physicsBody?.collisionBitMask = GameBitMask.wolf
+        grassNode?.name = "grass"
         
         scnView.scene = scene
         scnView.allowsCameraControl = false
@@ -78,21 +83,22 @@ class GameViewController: UIViewController {
     func setupPlayer() {
         player = Player()
         player?.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        player?.name = "wolf"
         player?.categoryBitMask = GameBitMask.wolf
+        player?.physicsBody?.contactTestBitMask = GameBitMask.donut
+        player?.physicsBody?.collisionBitMask = GameBitMask.donut | GameBitMask.grass
         if let currentPlayer = player {
             scene?.rootNode.addChildNode(currentPlayer)
         }
     }
     
     func setupDonut() {
-        for _ in 1...20 {
+        for i in 1...20 {
             let donut = Donut()
-
+            donut.name = "donut: \(i)"
             let xPos = Float.random(in: -6...6)
             let zPos = Float.random(in: -6...6)
             donut.position = SCNVector3(xPos,0,zPos)
-            donut.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-            donut.categoryBitMask = GameBitMask.donut
             scene?.rootNode.addChildNode(donut)
         }
     }
@@ -212,4 +218,16 @@ class GameViewController: UIViewController {
         }
     }
 
+}
+
+extension GameViewController: SCNPhysicsContactDelegate {
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        //print("nabrak Deh")
+        
+        print(contact.nodeA.name)
+        print(contact.nodeB.name)
+    }
+    
+    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
+    }
 }

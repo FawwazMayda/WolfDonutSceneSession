@@ -9,7 +9,7 @@
 import Foundation
 
 struct GameBitMask {
-    static let wolf = 1
-    static let grass = 2
-    static let donut = 3
+    static let wolf: Int = 1
+    static let grass: Int = 2
+    static let donut: Int = 3
 }

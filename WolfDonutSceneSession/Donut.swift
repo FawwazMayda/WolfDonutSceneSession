@@ -15,7 +15,9 @@ class Donut: SCNNode {
         
         let donutScene = SCNScene(named: "art.scnassets/donut.scn")!
         let donutNode = donutScene.rootNode.childNode(withName: "donut", recursively: true)!
-        
+        donutNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+        donutNode.categoryBitMask = GameBitMask.donut
+        donutNode.physicsBody?.collisionBitMask = GameBitMask.wolf
         let rotateDonutAction = SCNAction.rotateBy(x: 0, y: CGFloat(Double.pi), z: CGFloat(Double.pi), duration: 3.0)
         
         donutNode.runAction(SCNAction.repeatForever(rotateDonutAction))
