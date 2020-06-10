@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D2635062490BF4C00F8867B /* Donut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2635052490BF4C00F8867B /* Donut.swift */; };
 		4D89D85C248F6E7800A33812 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D89D85B248F6E7800A33812 /* AppDelegate.swift */; };
 		4D89D85E248F6E7800A33812 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D89D85D248F6E7800A33812 /* art.scnassets */; };
 		4D89D860248F6E7800A33812 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D89D85F248F6E7800A33812 /* GameViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D2635052490BF4C00F8867B /* Donut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donut.swift; sourceTree = "<group>"; };
 		4D89D858248F6E7800A33812 /* WolfDonutSceneSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WolfDonutSceneSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D89D85B248F6E7800A33812 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D89D85D248F6E7800A33812 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				4D89D85B248F6E7800A33812 /* AppDelegate.swift */,
 				4D89D85D248F6E7800A33812 /* art.scnassets */,
 				4D89D85F248F6E7800A33812 /* GameViewController.swift */,
+				4D2635052490BF4C00F8867B /* Donut.swift */,
 				4D89D873248F841400A33812 /* JoyStickController.swift */,
 				4D89D877248F976100A33812 /* SimdExtensions.swift */,
 				4D89D875248F853A00A33812 /* HUD.swift */,
@@ -154,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2635062490BF4C00F8867B /* Donut.swift in Sources */,
 				4D89D874248F841400A33812 /* JoyStickController.swift in Sources */,
 				4D89D860248F6E7800A33812 /* GameViewController.swift in Sources */,
 				4D89D872248F775A00A33812 /* Wolf.swift in Sources */,

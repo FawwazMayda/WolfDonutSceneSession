@@ -41,6 +41,7 @@ class GameViewController: UIViewController {
         setupPlayer()
         //Setup Camera
         loadCamera()
+        setupDonut()
         
         
     }
@@ -63,14 +64,34 @@ class GameViewController: UIViewController {
     func setupWorld() {
         scene = SCNScene(named: "art.scnassets/GameScene.scn")
         scene?.background.contents = UIImage(named: "art.scnassets/textures/Background_sky")
+        
+        let grassNode = scene?.rootNode.childNode(withName: "Grass", recursively: true)!
+        grassNode?.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+        
+        
         scnView.scene = scene
         scnView.allowsCameraControl = false
+        
+        
     }
     
     func setupPlayer() {
         player = Player()
+        player?.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         if let currentPlayer = player {
             scene?.rootNode.addChildNode(currentPlayer)
+        }
+    }
+    
+    func setupDonut() {
+        for _ in 1...20 {
+            let donut = Donut()
+
+            let xPos = Float.random(in: -6...6)
+            let zPos = Float.random(in: -6...6)
+            donut.position = SCNVector3(xPos,0,zPos)
+            donut.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+            scene?.rootNode.addChildNode(donut)
         }
     }
     
